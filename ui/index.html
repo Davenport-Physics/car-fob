@@ -1,0 +1,38 @@
+<html>
+    <head>
+
+        <script src="libs/jquery.js" text="text/javascript"></script>
+        <script src="scripts/car-fob.js" text="text/javascript"></script>
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+    <style>
+        area {
+            outline: 0;
+            border:none;
+        }
+    </style>
+    <body>
+        
+        <div class="car-list-container">
+            <ul class="w3-ul w3-card" style="width:50%" id="SelectCar">
+
+            </ul>
+        </div>
+        <div class="carfob-container">
+            <img src="images/car-fob.png" usemap="#image-map">
+            <map name="image-map">
+                <area target="" alt="Lock" title="Lock" onclick="LockDoor()" coords="300,109,298,172,357,178,350,141,332,119" shape="poly">
+                <area target="" alt="Unlock" title="Unlock" onclick="UnlockDoor()" coords="296,105,295,167,235,166,239,133,260,105,276,104" shape="poly">
+                <area target="" alt="EngineOn" title="EngineOn" onclick="ToggleEngine()" coords="231,184,235,252,358,257,356,182" shape="poly">
+                <area target="" alt="Alarm" title="Alarm" onclick="ToggleAlarm()" coords="230,269,239,348,271,359,342,342,361,301,361,267,277,266,252,268" shape="poly">
+            </map>
+        </div>
+    </body>
+    <script>
+        $(".carfob-container").hide()
+        $(".car-list-container").hide()
+        $("body").hide()
+    </script>
+</html>
