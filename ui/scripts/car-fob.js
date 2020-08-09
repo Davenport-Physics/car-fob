@@ -20,7 +20,6 @@ function ShowCarFob(vehicle_id)
 
     $(".car-list-container").hide()
     current_vehicle_id = vehicle_id
-    console.log(current_vehicle_id)
     $(".carfob-container").show()
 
 }
