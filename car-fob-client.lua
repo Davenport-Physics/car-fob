@@ -45,9 +45,10 @@ end
 local function ToggleVehicleEngine(vehicle)
 
     if GetIsVehicleEngineRunning(vehicle) then
+        exports['mythic_notify']:SendAlert('inform', 'Engine turned off', 2500)
         SetVehicleEngineOn(vehicle, false, true, false)
     else
-        SoundVehicleHornThisFrame(vehicle)
+        exports['mythic_notify']:SendAlert('inform', 'Engine turned on', 2500)
         SetVehicleEngineOn(vehicle, true, true, false)
     end
 
@@ -69,6 +70,7 @@ local function ToggleVehicleLock(vehicle)
     if GetVehicleDoorsLockedForPlayer(vehicle, PlayerPedId()) then
         SetVehicleDoorsLockedForAllPlayers(vehicle, false)
     else
+        SoundVehicleHornThisFrame(data.vehicle_id)
         SetVehicleDoorsLockedForAllPlayers(vehicle, true)
     end
 
@@ -94,10 +96,14 @@ RegisterNUICallback("EscapeCarFob", function(data, cb)
 end)
 
 RegisterNUICallback("LockDoors", function(data, cb)
+    SoundVehicleHornThisFrame(data.vehicle_id)
+    exports['mythic_notify']:SendAlert('inform', 'Locked Doors', 2500)
     SetVehicleDoorsLockedForAllPlayers(data.vehicle_id, true)
 end)
 
 RegisterNUICallback("UnlockDoors", function(data, cb)
+    SoundVehicleHornThisFrame(data.vehicle_id)
+    exports['mythic_notify']:SendAlert('inform', 'Unlocked Doors', 2500)
     SetVehicleDoorsLockedForAllPlayers(data.vehicle_id, false)
 end)
 
