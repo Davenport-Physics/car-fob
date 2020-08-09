@@ -12,12 +12,23 @@
             outline: 0;
             border:none;
         }
+        .car-list-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .carfob-container {
+            position: fixed;
+            bottom: 1%;
+            right: 1%;
+        }
     </style>
     <body>
         
         <div class="car-list-container">
-            <ul class="w3-ul w3-card" style="width:50%" id="SelectCar">
-
+            <ul class="w3-ul w3-card" style="background-color:rgba(56, 137, 181, 150); color:white;" id="SelectCar">
             </ul>
         </div>
         <div class="carfob-container">

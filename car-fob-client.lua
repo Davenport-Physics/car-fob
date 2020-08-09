@@ -57,9 +57,11 @@ end
 local function ToggleVehicleAlarm(vehicle)
 
     if IsVehicleAlarmActivated(vehicle) then
+        exports['mythic_notify']:SendAlert('inform', 'Car Alarm Off', 2500)
         SetVehicleAlarm(vehicle, false)
     else
         SetVehicleAlarm(vehicle, true)
+        exports['mythic_notify']:SendAlert('inform', 'Car Alarm On', 2500)
         SetVehicleAlarmTimeLeft(vehicle, Config.AlarmTimeInSecs * 1000)
     end
 
@@ -70,7 +72,6 @@ local function ToggleVehicleLock(vehicle)
     if GetVehicleDoorsLockedForPlayer(vehicle, PlayerPedId()) then
         SetVehicleDoorsLockedForAllPlayers(vehicle, false)
     else
-        SoundVehicleHornThisFrame(data.vehicle_id)
         SetVehicleDoorsLockedForAllPlayers(vehicle, true)
     end
 
@@ -108,6 +109,7 @@ RegisterNUICallback("UnlockDoors", function(data, cb)
 end)
 
 RegisterNUICallback("ToggleEngine", function(data, cb)
+    SoundVehicleHornThisFrame(data.vehicle_id)
     ToggleVehicleEngine(data.vehicle_id)
 end)
 
